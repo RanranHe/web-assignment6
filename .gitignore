@@ -1,0 +1,10 @@
+.DS_Store
+*.log
+*.tmp
+**/npm-cache
+/node_modules
+/tmp
+.idea/
+.vscode/
+.idea/workspace.xml
+docs/
