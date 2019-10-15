@@ -79,8 +79,6 @@ function addClass(element, style) {
                 node.classList.add(style);
             }
         } else {
-            console.log("hereeee")
-            console.log(node.nodeValue)
             node.innerHTML = `<span class='${style}'` + node.nodeValue + '</span>';
         }
         removeClass(node);
