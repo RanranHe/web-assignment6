@@ -3,14 +3,26 @@
     <title>js获取编辑框游标的位置</title>
 
     <style type="text/css">
-        #Div1, #Div2
-        {
+        #Div1, #Div2 {
             width: 500px;
             height: 100px;
             border: solid 1px black;
         }
+
         span.bold {
+            font-weight: bold;
+        }
+
+        span.italic {
+            font-style: italic;
+        }
+
+        span.bold_false {
             font-weight: normal;
+        }
+
+        span.italic_false {
+            font-style: normal;
         }
     </style>
 
@@ -18,16 +30,26 @@
 <body>
 
 
-<button type="button" id='ddddd' >
+<button type="button" id='btn_bold'>
     bold
 </button>
-<button type="button" id='ddddd' >
+<button type="button" id='btn_italics'>
     Italics
 </button>
-<div contentEditable="true" style="height:50px; border:2px solid red;" id="test">
-    dasdsadasdasdasddasdasdasdasdsadsa
+<div contentEditable="true" style="height:50px; border:2px solid red;" id="text">
+    <!--dasdsadasdasdasddas<span class="bold">dasdas<span class="bold_false"><span class="bold">da</span>s<span-->
+    <!--class="bold">ds</span></span>adsa</span>-->
+
+    <!--dasdsad<span class="bold">asd</span><span class="bold"><span class="bold">asdas</span>ddas<span-->
+    <!--class="bold">dasd</span></span><span class="bold">as<span class="bold_false"><span class="bold">da</span>s<span-->
+    <!--class="bold">ds</span></span>adsa</span>-->
+
+    dasdsad<span class="bold">asd</span><span class="bold"><span class="bold">asdas</span>dda</span><span
+        class="italic"><span class="bold italic">s<span class="bold">dasd</span></span><span class="bold italic">as<span
+        class="bold_false"><span class="bold">da</span>s<span class="bold">ds</span></span>ad</span></span><span
+        class="bold">sa</span>
 </div>
 
-<script type = "text/javascript" src = "js/main.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
