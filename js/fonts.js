@@ -1,6 +1,3 @@
-import {isBold} from "./bold.js";
-import {isItalics} from "./italic.js";
-
 export function insertHtmlAtCaret(style) {
     let sel, range;
     if (window.getSelection()) {
@@ -19,23 +16,17 @@ export function insertHtmlAtCaret(style) {
                 el.innerHTML = '<span class="bold">' + span.innerHTML + '</span>';
             }
             if (style === 'NB') {
+                removeClass(span, "bold");
                 el.innerHTML = '<span class="bold_false">' + sel + '</span>';
             }
             if (style === 'I') {
                 removeClass(span, "italic_false");
                 addClass(span, 'italic');
-                // el.innerHTML = '<span>' + span.innerHTML + '</span>';
-                // el.style.fontStyle = 'italic';
                 el.innerHTML = '<span class="italic">' + span.innerHTML + '</span>';
             }
             if (style === 'NI') {
                 removeClass(span, "italic");
-                if (isBold()) {
-                    console.log("italic!!")
-                    el.innerHTML = '<span class="italic_false bold">' + sel + '</span>';
-                } else {
-                    el.innerHTML = '<span class="italic_false">' + sel + '</span>';
-                }
+                el.innerHTML = '<span class="italic_false">' + sel + '</span>';
             }
             range.deleteContents();
             var frag = document.createDocumentFragment(), node, lastNode;

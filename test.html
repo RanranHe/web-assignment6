@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <title>Text Editor</title>
+
+    <style type="text/css">
+        #Div1, #Div2 {
+            width: 500px;
+            height: 100px;
+            border: solid 1px black;
+        }
+
+        span.bold {
+            font-weight: bold;
+        }
+
+        span.italic {
+            font-style: italic;
+        }
+
+        span.bold_false {
+            font-weight: normal;
+        }
+
+        span.italic_false {
+            font-style: normal;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<button type="button" id='btn_bold'>
+    bold
+</button>
+<button type="button" id='btn_italics'>
+    Italics
+</button>
+<div onkeydown="return noNumbers(event)" contentEditable="true" style="height:50px; border:2px solid red;" id="text">
+    <span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span>
+</div>
+
+
+<script type="text/javascript" src="js_test/test.js"></script>
+</body>
+</html>

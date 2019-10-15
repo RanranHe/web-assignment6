@@ -38,7 +38,7 @@ function buttonItalicsColor() {
 
 document.getElementById('btn_bold').onclick = function () {
     document.getElementById('text').focus();
-    if (isBold())
+    if (isStyle('bold'))
         insertHtmlAtCaret('NB');
     else
         insertHtmlAtCaret('B');
@@ -46,7 +46,7 @@ document.getElementById('btn_bold').onclick = function () {
 
 document.getElementById('btn_italics').onclick = function () {
     document.getElementById('text').focus();
-    if (isItalics())
+    if (isStyle('italic'))
         insertHtmlAtCaret('NI');
     else
         insertHtmlAtCaret('I');
