@@ -1,16 +1,15 @@
-export function isItalics() {
+export function isStyle(style) {
     const range = window.getSelection().getRangeAt(0);
     const el = document.createElement("div");
     el.append(range.cloneContents());
 
-    var italic = true;
-    console.log(el)
-    if (range.commonAncestorContainer.classList === undefined || !range.commonAncestorContainer.classList.contains('italic')) {
+    var flag = true;
+    if (range.commonAncestorContainer.classList === undefined || !range.commonAncestorContainer.classList.contains(style)) {
         if (el.childElementCount === 0) {
             AllBold(el, true);
         } else {
             if (el.childElementCount < el.childNodes.length) {
-                italic = false;
+                flag = false;
                 // AllBold(el, false);
             } else {
                 console.log("here")
@@ -20,27 +19,27 @@ export function isItalics() {
 
     } else {
 
-        AllBold(el, !range.commonAncestorContainer.classList.contains('italic_false'));
+        AllBold(el, !range.commonAncestorContainer.classList.contains(style+'_false'));
     }
 
     function AllBold(ele, bool) {
         if (!bool && ele.childElementCount === 0 && ele.childNodes.length !== 0) {
             console.log("here")
-            italic = false;
+            flag = false;
             return;
         }
         if (ele.childElementCount !== 0) {
             for (let i = 0; i < ele.childNodes.length; i++) {
                 console.log()
                 if (ele.childNodes[i].tagName !== undefined) {
-                    if (ele.childNodes[i].classList.contains('italic')) {
+                    if (ele.childNodes[i].classList.contains(style)) {
                         console.log(bool)
                         AllBold(ele.childNodes[i], true);
                     } else {
                         console.log(bool)
-                        if (ele.childNodes[i].classList.contains('italic_false')) {
+                        if (ele.childNodes[i].classList.contains(style+'_false')) {
                             if (ele.childNodes[i].childNodes.length > ele.childNodes[i].childElementCount) {
-                                italic = false;
+                                flag = false;
                                 return;
                             } else {
                                 AllBold(ele.childNodes[i], false);
@@ -53,7 +52,7 @@ export function isItalics() {
                             console.log(bool)
                             if (!bool && ele.childNodes[i].childElementCount < ele.childNodes[i].childNodes.length) {
                                 console.log("!!!!!!!")
-                                italic = false;
+                                flag = false;
                             } else {
                                 AllBold(ele.childNodes[i], bool);
                             }
@@ -64,7 +63,13 @@ export function isItalics() {
         }
     }
 
-    return (getComputedStyle(window.getSelection().anchorNode.parentElement).fontStyle === 'italic'
-        && getComputedStyle(window.getSelection().focusNode.parentElement).fontStyle === 'italic'
-        && italic)
+    const checkTwoSides = function () {
+        if (style === 'italic')
+            return getComputedStyle(window.getSelection().anchorNode.parentElement).fontStyle === 'italic'
+                && getComputedStyle(window.getSelection().focusNode.parentElement).fontStyle === 'italic';
+        if (style === 'bold')
+            return getComputedStyle(window.getSelection().anchorNode.parentElement).fontWeight === '700'
+            && getComputedStyle(window.getSelection().focusNode.parentElement).fontWeight === '700';
+    };
+    return (checkTwoSides() && flag);
 }

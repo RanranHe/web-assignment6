@@ -1,6 +1,5 @@
-import { isBold } from './bold.js';
-import { isItalics } from "./italic.js";
 import { insertHtmlAtCaret } from "./fonts.js";
+import {isStyle} from "./checkStyle.js";
 
 document.onkeyup = document.onmouseup = function () {
     // console.log(window.getSelection().anchorNode.parentElement.tagName)
@@ -18,14 +17,14 @@ function resetAllButtons() {
 }
 
 function buttonBoldColor() {
-    if (isBold())
+    if (isStyle('bold'))
         document.getElementById('btn_bold').style.backgroundColor = "#2789b3";
     else
         document.getElementById('btn_bold').style.backgroundColor = "#FAFAFA";
 }
 
 function buttonItalicsColor() {
-    if (isItalics())
+    if (isStyle('italic'))
         document.getElementById('btn_italics').style.backgroundColor = "#2789b3";
     else
         document.getElementById('btn_italics').style.backgroundColor = "#FAFAFA";
