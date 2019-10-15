@@ -32,7 +32,7 @@ export function insertHtmlAtCaret(style) {
                 removeClass(span, "italic");
                 if (isBold()) {
                     console.log("italic!!")
-                    el.innerHTML = '<span class="italic_false">' + sel + '</span>';
+                    el.innerHTML = '<span class="italic_false bold">' + sel + '</span>';
                 } else {
                     el.innerHTML = '<span class="italic_false">' + sel + '</span>';
                 }
@@ -78,6 +78,10 @@ function addClass(element, style) {
             if (!node.classList.contains(style)) {
                 node.classList.add(style);
             }
+        } else {
+            console.log("hereeee")
+            console.log(node.nodeValue)
+            node.innerHTML = `<span class='${style}'` + node.nodeValue + '</span>';
         }
         removeClass(node);
     })

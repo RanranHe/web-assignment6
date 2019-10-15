@@ -4,57 +4,53 @@ export function isItalics() {
     el.append(range.cloneContents());
 
     const ancestorBold = function () {
-        // console.log(range.commonAncestorContainer.classList);
-        // console.log(el.childNodes);
-        // console.log(el.childElementCount);
         if (range.commonAncestorContainer.classList === undefined || range.commonAncestorContainer.classList.value === "") {
-            // console.log("here!!!!");
             if (el.childNodes.length === 1 && el.childElementCount === 0) return true;
             if (el.childElementCount < el.childNodes.length) {
                 return false;
             } else {
                 return true;
             }
-        }
-        else return !range.commonAncestorContainer.classList.contains('italic_false');
+        } else return !range.commonAncestorContainer.classList.contains('italic_false');
     };
 
-    // const AllBold = function (ele, bool) {
-    //     // console.log(ele)
-    //     if (ele.childElementCount !== 0) {
-    //         ele.childNodes.forEach(node => {
-    //             // console.log(node)
-    //             if (node.tagName !== undefined) {
-    //                 bool = bool && (node.parentElement.style.fontStyle === 'italic' || node.parentElement.style.fontStyle === '');
-    //                 if (node.classList.contains('italic_false') && node.childNodes.length > node.childElementCount) {
-    //                     bool = false;
-    //                 }
-    //                 AllBold(node, bool);
-    //             }
-    //         });
-    //     }
-    //     return bool;
-    // };
+    let italic = true;
+    AllBold(el, ancestorBold());
 
-    var italic = true;
-    AllBold(el);
-    function AllBold(ele) {
+    function AllBold(ele, bool) {
+        if (!ancestorBold) {
+            italic = false;
+            return;
+        }
         if (ele.childElementCount !== 0) {
-            for(let i = 0; i < ele.childNodes.length; i ++) {
+            for (let i = 0; i < ele.childNodes.length; i++) {
                 if (ele.childNodes[i].tagName !== undefined) {
-                    if (ele.childNodes[i].classList.contains('italic_false') && ele.childNodes[i].childNodes.length > ele.childNodes[i].childElementCount) {
-                        italic = false;
+
+                    if (ele.childNodes[i].classList.contains('italic')) {
+                        AllBold(ele.childNodes[i], true);
                     }
-                    if (ele.childNodes[i].parentElement.style.fontStyle === 'italic') {
-                        italic = false;
+                    if (ele.childNodes[i].classList.contains('italic_false')) {
+                        if (ele.childNodes[i].childNodes.length > ele.childNodes[i].childElementCount) {
+                            italic = false;
+                            return;
+                        } else {
+                            AllBold(ele.childNodes[i], false);
+                        }
+                    } else {
+                        if (ele.childNodes[i].childElementCount === 0) {
+                            if (ele.childNodes[i].childNodes.length !== 0 && !bool) {
+                                italic = false;
+                                return;
+                            }
+                        } else {
+                            AllBold(ele.childNodes[i], true);
+                        }
                     }
-                    AllBold(ele.childNodes[i]);
                 }
             }
         }
     }
-
     return (getComputedStyle(window.getSelection().anchorNode.parentElement).fontStyle === 'italic'
         && getComputedStyle(window.getSelection().focusNode.parentElement).fontStyle === 'italic'
-        && italic && ancestorBold())
+        && italic)
 }
