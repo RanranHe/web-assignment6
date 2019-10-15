@@ -80,7 +80,7 @@ function isBold() {
             // });
         }
         // return bool;
-    };
+    }
 
     console.log(getComputedStyle(window.getSelection().anchorNode.parentElement).fontWeight !== '400');
     console.log(getComputedStyle(window.getSelection().focusNode.parentElement).fontWeight !== '400');
@@ -113,31 +113,44 @@ function isItalics() {
         else return !range.commonAncestorContainer.classList.contains('italic_false');
     };
 
-    const AllBold = function (ele, bool) {
-        // console.log(ele)
-        if (ele.childElementCount !== 0) {
-            ele.childNodes.forEach(node => {
-                // console.log(node)
-                if (node.tagName !== undefined) {
-                    bool = bool && (node.parentElement.style.fontStyle === 'italic' || node.parentElement.style.fontStyle === '');
-                    if (node.classList.contains('italic_false') && node.childNodes.length > node.childElementCount) {
-                        bool = false;
-                    }
-                    AllBold(node, bool);
-                }
-            });
-        }
-        return bool;
-    };
+    // const AllBold = function (ele, bool) {
+    //     // console.log(ele)
+    //     if (ele.childElementCount !== 0) {
+    //         ele.childNodes.forEach(node => {
+    //             // console.log(node)
+    //             if (node.tagName !== undefined) {
+    //                 bool = bool && (node.parentElement.style.fontStyle === 'italic' || node.parentElement.style.fontStyle === '');
+    //                 if (node.classList.contains('italic_false') && node.childNodes.length > node.childElementCount) {
+    //                     bool = false;
+    //                 }
+    //                 AllBold(node, bool);
+    //             }
+    //         });
+    //     }
+    //     return bool;
+    // };
 
-    // console.log(getComputedStyle(window.getSelection().anchorNode.parentElement).fontStyle === 'italic');
-    // console.log(getComputedStyle(window.getSelection().focusNode.parentElement).fontStyle === 'italic');
-    // console.log(AllBold(el, true) === true);
-    // console.log(ancestorBold() === true);
+    var italic = true;
+    AllBold(el);
+    function AllBold(ele) {
+        if (ele.childElementCount !== 0) {
+            for(let i = 0; i < ele.childNodes.length; i ++) {
+                if (ele.childNodes[i].tagName !== undefined) {
+                    if (ele.childNodes[i].classList.contains('italic_false') && ele.childNodes[i].childNodes.length > ele.childNodes[i].childElementCount) {
+                        italic = false;
+                    }
+                    if (ele.childNodes[i].parentElement.style.fontStyle === 'italic') {
+                        italic = false;
+                    }
+                    AllBold(ele.childNodes[i]);
+                }
+            }
+        }
+    }
 
     return (getComputedStyle(window.getSelection().anchorNode.parentElement).fontStyle === 'italic'
         && getComputedStyle(window.getSelection().focusNode.parentElement).fontStyle === 'italic'
-        && AllBold(el, true) && ancestorBold())
+        && italic && ancestorBold())
 }
 
 document.getElementById('btn_bold').onclick = function () {
