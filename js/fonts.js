@@ -69,7 +69,7 @@ export function insertHtmlAtCaret(style) {
     }
 
     function addClass(element, style) {
-        for (var i = 0; i < element.childNodes.length; i++) {
+        for (let i = 0; i < element.childNodes.length; i++) {
             if (element.childNodes[i].className !== undefined) {
                 if (!element.childNodes[i].classList.contains(style)) {
                     element.childNodes[i].classList.add(style);
