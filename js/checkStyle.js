@@ -1,8 +1,10 @@
 export function isStyle(style) {
+
     const range = window.getSelection().getRangeAt(0);
     const el = document.createElement("div");
     el.append(range.cloneContents());
 
+    console.log(el)
     var flag = true;
     if (range.commonAncestorContainer.classList === undefined || !range.commonAncestorContainer.classList.contains(style)) {
         if (el.childElementCount === 0) {

@@ -12,21 +12,23 @@ export function insertHtmlAtCaret(style) {
 
             if (style === 'B') {
                 removeClass(span, "bold_false");
-                addClass(span, 'bold');
-                el.innerHTML = '<span class="bold">' + span.innerHTML + '</span>';
+                addClass(span, "bold");
+                el.innerHTML = span.innerHTML;
             }
             if (style === 'NB') {
                 removeClass(span, "bold");
-                el.innerHTML = '<span class="bold_false">' + sel + '</span>';
+                addClass(span, "bold_false");
+                el.innerHTML = span.innerHTML;
             }
             if (style === 'I') {
                 removeClass(span, "italic_false");
-                addClass(span, 'italic');
-                el.innerHTML = '<span class="italic">' + span.innerHTML + '</span>';
+                addClass(span, "italic");
+                el.innerHTML = span.innerHTML;
             }
             if (style === 'NI') {
                 removeClass(span, "italic");
-                el.innerHTML = '<span class="italic_false">' + sel + '</span>';
+                addClass(span, "italic_false");
+                el.innerHTML = span.innerHTML;
             }
             range.deleteContents();
             var frag = document.createDocumentFragment(), node, lastNode;
@@ -44,35 +46,67 @@ export function insertHtmlAtCaret(style) {
             console.log(document.getElementById('text').innerHTML);
         }
     }
-}
 
-function removeClass(element, style) {
-    if (element.childElementCount === 0) {
-        return;
+    function removeClass(element, style) {
+        console.log(style)
+        if (element.childElementCount === 0) {
+            return;
+        }
+        element.childNodes.forEach(node => {
+            if (node.className !== undefined) {
+                if (node.classList.contains(style)) {
+                    node.classList.remove(style);
+                }
+            }
+            removeClass(node, style);
+        })
     }
-    element.childNodes.forEach(node => {
-        if (node.className !== undefined) {
-            if (node.classList.contains(style)) {
-                node.classList.remove(style);
+
+    function addClass(element, style) {
+        console.log(style)
+        for (var i = 0; i < element.childNodes.length; i++) {
+            if (element.childNodes[i].className !== undefined) {
+                if (!element.childNodes[i].classList.contains(style)) {
+                    element.childNodes[i].classList.add(style);
+                }
+                addClass(element.childNodes[i], style);
+            } else {
+                var temp = document.createElement('span');
+
+                temp.classList.add("" + style);
+                // console.log(style)
+                // if (style === 'bold') {
+                //     temp.classList.add("bold");
+                // }
+                // if (style === 'italic') {
+                //     temp.classList.add("italic");
+                // }
+
+                temp.innerHTML = element.childNodes[i].nodeValue
+
+                console.log(temp.innerHTML)
+                element.replaceChild(temp, element.childNodes[i])
+                console.log(element.childNodes[i])
+                // node.innerHTML = `<span class='${style}'` + node.nodeValue + '</span>';
             }
         }
-        removeClass(node);
-    })
+        // element.childNodes.forEach(node => {
+        //     if (node.className !== undefined) {
+        //         if (!node.classList.contains(style)) {
+        //             node.classList.add(style);
+        //         }
+        //     } else {
+        //         var temp = document.createElement('span');
+        //         temp.classList.add('' + style);
+        //         temp.innerHTML = node.nodeValue;
+        //         element.replaceChild(temp, )
+        //         // node.innerHTML = `<span class='${style}'` + node.nodeValue + '</span>';
+        //     }
+        //     removeClass(node);
+        // })
+    }
+
 }
 
-function addClass(element, style) {
-    if (element.childElementCount === 0) {
-        return;
-    }
-    element.childNodes.forEach(node => {
-        if (node.className !== undefined) {
-            if (!node.classList.contains(style)) {
-                node.classList.add(style);
-            }
-        } else {
-            node.innerHTML = `<span class='${style}'` + node.nodeValue + '</span>';
-        }
-        removeClass(node);
-    })
-}
+
 
