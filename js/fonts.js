@@ -40,6 +40,16 @@ export function insertHtmlAtCaret(style) {
                 addClass(span, "underline_false");
                 el.innerHTML = span.innerHTML;
             }
+            // if (style === 'leftAlign') {
+            //     removeClass(span, "leftAlign_false");
+            //     addClass(span, "leftAlign");
+            //     el.innerHTML = span.innerHTML;
+            // }
+            // if (style === 'leftAlign_false') {
+            //     removeClass(span, "leftAlign");
+            //     addClass(span, "leftAlign_false");
+            //     el.innerHTML = span.innerHTML;
+            // }
             range.deleteContents();
             var frag = document.createDocumentFragment(), node, lastNode;
             while ((node = el.firstChild)) {

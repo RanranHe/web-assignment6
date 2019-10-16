@@ -10,6 +10,7 @@ document.onkeyup = document.onmouseup = function () {
     buttonBoldColor();
     buttonItalicsColor();
     buttonUnderlineColor();
+    buttonleftAlignColor();
 };
 
 function resetAllButtons() {
@@ -38,6 +39,12 @@ function buttonUnderlineColor() {
         document.getElementById('btn_underline').style.backgroundColor = "#FAFAFA";
 }
 
+function buttonleftAlignColor() {
+    if (isStyle('leftAlign'))
+        document.getElementById('btn_leftAlign').style.backgroundColor = "#2789b3";
+    else
+        document.getElementById('btn_leftAlign').style.backgroundColor = "#FAFAFA";
+}
 
 
 
@@ -66,6 +73,14 @@ document.getElementById('btn_underline').onclick = function () {
         insertHtmlAtCaret('underline_false');
     else
         insertHtmlAtCaret('underline');
+};
+
+document.getElementById('btn_leftAlign').onclick = function () {
+    document.getElementById('text').focus();
+    if (isStyle('leftAlign'))
+        insertHtmlAtCaret('leftAlign_false');
+    else
+        insertHtmlAtCaret('leftAlign');
 };
 
 

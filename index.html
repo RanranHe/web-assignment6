@@ -7,6 +7,7 @@
             width: 500px;
             height: 100px;
             border: solid 1px black;
+            display: inline-block;
         }
 
         span.bold {
@@ -36,14 +37,15 @@
 
         span.underline_false {
             text-decoration: none;
-            display:inline-block;
+            display: inline-block;
         }
 
         span.leftAliagn {
-            float: left;
+            float: right;
             display: inline-block;
         }
-        span.leftAliagn {
+
+        span.leftAliagn_false {
             float: none;
             display: inline-block;
         }
@@ -62,10 +64,13 @@
 <button type="button" id='btn_underline'>
     Underline
 </button>
+<button type="button" id='btn_leftAlign'>
+    left align
+</button>
 
 <div style="height:50px; border:2px solid red;" id="text">
-    abcdefghijklmnopq
-    abcdefghij<span class="underline">k<span class="underline_false none">lmno</span>pq</span>
+    <!--abcdefghijklmnopqrstuvwxyz-->
+    abcdefghijklmnopq<span class="leftAlign">rstuvwxyz</span>
 </div>
 
 <script type="module" src="js/main.js"></script>
