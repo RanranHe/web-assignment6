@@ -26,9 +26,7 @@ export function isStyle(style) {
                 AllBold(el, false);
             }
         }
-
     } else {
-
         AllBold(el, !range.commonAncestorContainer.classList.contains(style + '_false'));
     }
 

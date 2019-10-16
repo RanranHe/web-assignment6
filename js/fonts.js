@@ -61,7 +61,10 @@ export function insertHtmlAtCaret(style) {
                 range.setStartAfter(lastNode);
                 range.collapse(true);
                 // sel.removeAllRanges();
+                console.log("============================")
                 sel.addRange(range);
+                console.log(range.commonAncestorContainer.childNodes)
+                console.log("============================")
             }
             console.log(document.getElementById('text').innerHTML);
         }
