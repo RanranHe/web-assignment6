@@ -77,17 +77,20 @@ document.getElementById('btn_underline').onclick = function () {
 };
 
 document.getElementById('btn_leftAlign').onclick = function () {
+    document.getElementById('text').style.textJustify = 'none';
+    document.getElementById('text').style.textAlignLast = 'unset';
     document.getElementById('text').style.textAlign = 'left';
     console.log(document)
 };
 
 document.getElementById('btn_rightAlign').onclick = function () {
+    document.getElementById('text').style.textJustify = 'none';
+    document.getElementById('text').style.textAlignLast = 'unset';
     document.getElementById('text').style.textAlign = 'right';
     console.log(document)
 };
 
 document.getElementById('btn_justify').onclick = function () {
-    document.getElementById('text').style.width = '100%';
     document.getElementById('text').style.textAlign = 'justify';
     document.getElementById('text').style.textJustify = 'distribute-all-lines';
     document.getElementById('text').style.textAlignLast = 'justify';

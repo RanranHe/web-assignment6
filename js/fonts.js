@@ -61,7 +61,7 @@ export function insertHtmlAtCaret(style) {
                 range.setStartAfter(lastNode);
                 range.collapse(true);
                 // sel.removeAllRanges();
-                // sel.addRange(range);
+                sel.addRange(range);
             }
             console.log(document.getElementById('text').innerHTML);
         }
