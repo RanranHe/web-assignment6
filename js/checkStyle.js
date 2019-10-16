@@ -9,8 +9,16 @@ export function isStyle(style) {
             AllBold(el, true);
         } else {
             if (el.childElementCount < el.childNodes.length) {
-                flag = false;
-                // AllBold(el, false);
+                el.childNodes.forEach(node => {
+                    if (!((node.innerText === undefined && node.nodeValue === "") || node.innerText !== undefined)) {
+                        flag = false;
+                    }
+                    console.log(flag);
+
+                });
+                if (flag) {
+                    AllBold(el, true);
+                }
             } else {
                 console.log("here")
                 AllBold(el, false);
@@ -39,8 +47,15 @@ export function isStyle(style) {
                         console.log(bool)
                         if (ele.childNodes[i].classList.contains(style+'_false')) {
                             if (ele.childNodes[i].childNodes.length > ele.childNodes[i].childElementCount) {
-                                flag = false;
-                                return;
+                                ele.childNodes.forEach(node => {
+                                    if (!(node.innerText === undefined && node.nodeValue === "" && node.innerText !== undefined)) {
+                                        flag = false;
+                                        return;
+                                    }
+                                });
+                                if (flag) {
+                                    AllBold(ele, false);
+                                }
                             } else {
                                 AllBold(ele.childNodes[i], false);
                             }
@@ -51,8 +66,17 @@ export function isStyle(style) {
                             console.log(ele.childNodes)
                             console.log(bool)
                             if (!bool && ele.childNodes[i].childElementCount < ele.childNodes[i].childNodes.length) {
-                                console.log("!!!!!!!")
-                                flag = false;
+                                if (ele.childNodes[i].childNodes.length > ele.childNodes[i].childElementCount) {
+                                    ele.childNodes.forEach(node => {
+                                        if (!(node.innerText === undefined && node.nodeValue === "" && node.innerText !== undefined)) {
+                                            flag = false;
+                                            return;
+                                        }
+                                    });
+                                    if (flag) {
+                                        AllBold(ele, false);
+                                    }
+                                }
                             } else {
                                 AllBold(ele.childNodes[i], bool);
                             }
