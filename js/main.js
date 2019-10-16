@@ -76,12 +76,26 @@ document.getElementById('btn_underline').onclick = function () {
 };
 
 document.getElementById('btn_leftAlign').onclick = function () {
-    document.getElementById('text').focus();
-    if (isStyle('leftAlign'))
-        insertHtmlAtCaret('leftAlign_false');
-    else
-        insertHtmlAtCaret('leftAlign');
+    document.getElementById('text').style.cssFloat = 'left';
+    console.log(document)
 };
+
+document.getElementById('btn_rightAlign').onclick = function () {
+    document.getElementById('text').style.cssFloat = 'right';
+    console.log(document)
+};
+
+document.getElementById('btn_justify').onclick = function () {
+    console.log("herefdsafdsf")
+    document.getElementById('text').style.width = '100%';
+    document.getElementById('text').style.textAlign = 'justify';
+    document.getElementById('text').style.textJustify = 'distribute-all-lines';
+    document.getElementById('text').style.textAlignLast = 'justify';
+    // document.getElementById('text').style
+
+    console.log(document)
+};
+
 
 
 

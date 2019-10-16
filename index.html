@@ -39,16 +39,6 @@
             text-decoration: none;
             display: inline-block;
         }
-
-        span.leftAliagn {
-            float: right;
-            display: inline-block;
-        }
-
-        span.leftAliagn_false {
-            float: none;
-            display: inline-block;
-        }
     </style>
 
 </head>
@@ -65,12 +55,21 @@
     Underline
 </button>
 <button type="button" id='btn_leftAlign'>
-    left align
+    Left align
+</button>
+<button type="button" id='btn_rightAlign'>
+    Right align
+</button>
+<button type="button" id='btn_justify'>
+    Justify
 </button>
 
-<div style="height:50px; border:2px solid red;" id="text">
-    <!--abcdefghijklmnopqrstuvwxyz-->
-    abcdefghijklmnopq<span class="leftAlign">rstuvwxyz</span>
+
+<div style="height: 100px; width: 100%; display: inline-block; border:2px solid red;">
+    <div contenteditable="true" style="height:50px; display: inline-block;" id="text">
+        <!--abcdefghijklmnopqrstuvwxyz-->
+        abcdefghijklmnopq<span>rstuvwxyz</span>
+    </div>
 </div>
 
 <script type="module" src="js/main.js"></script>
