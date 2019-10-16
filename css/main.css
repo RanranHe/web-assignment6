@@ -1,0 +1,29 @@
+span.bold {
+    font-weight: bold;
+    display: inline-block;
+}
+
+span.italic {
+    font-style: italic;
+    display: inline-block;
+}
+
+span.bold_false {
+    font-weight: normal;
+    display: inline-block;
+}
+
+span.italic_false {
+    font-style: normal;
+    display: inline-block;
+}
+
+span.underline {
+    text-decoration: underline;
+    display: inline-block;
+}
+
+span.underline_false {
+    text-decoration: none;
+    display: inline-block;
+}
