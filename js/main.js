@@ -16,10 +16,6 @@ function resetAllButtons() {
     document.getElementById('btn_bold').style.backgroundColor = "#FAFAFA";
     document.getElementById('btn_italics').style.backgroundColor = "#FAFAFA";
     document.getElementById('btn_underline').style.backgroundColor = "#FAFAFA";
-    document.getElementById('btn_leftAlign').style.backgroundColor = "#FAFAFA";
-    document.getElementById('btn_rightAlign').style.backgroundColor = "#FAFAFA";
-    document.getElementById('btn_justify').style.backgroundColor = "#FAFAFA";
-    document.getElementById('btn_italics').style.backgroundColor = "#FAFAFA";
 }
 
 function buttonBoldColor() {
@@ -75,9 +71,11 @@ document.getElementById('btn_underline').onclick = function () {
         insertHtmlAtCaret('underline');
 };
 
-let flag = false;
 document.getElementById('btn_leftAlign').onclick = function () {
-    flag = true;
+    document.getElementById('btn_leftAlign').style.backgroundColor = "#2789b3";
+    document.getElementById('btn_rightAlign').style.backgroundColor = "#FAFAFA";
+    document.getElementById('btn_justify').style.backgroundColor = "#FAFAFA";
+
     document.getElementById('text').style.textJustify = 'none';
     document.getElementById('text').style.textAlignLast = 'unset';
     document.getElementById('text').style.textAlign = 'left';
@@ -85,7 +83,10 @@ document.getElementById('btn_leftAlign').onclick = function () {
 };
 
 document.getElementById('btn_rightAlign').onclick = function () {
-    flag = true;
+    document.getElementById('btn_leftAlign').style.backgroundColor = "#FAFAFA";
+    document.getElementById('btn_rightAlign').style.backgroundColor = "#2789b3";
+    document.getElementById('btn_justify').style.backgroundColor = "#FAFAFA";
+
     document.getElementById('text').style.textJustify = 'none';
     document.getElementById('text').style.textAlignLast = 'unset';
     document.getElementById('text').style.textAlign = 'right';
@@ -93,7 +94,10 @@ document.getElementById('btn_rightAlign').onclick = function () {
 };
 
 document.getElementById('btn_justify').onclick = function () {
-    flag = true;
+    document.getElementById('btn_leftAlign').style.backgroundColor = "#FAFAFA";
+    document.getElementById('btn_rightAlign').style.backgroundColor = "#FAFAFA";
+    document.getElementById('btn_justify').style.backgroundColor = "#2789b3";
+
     document.getElementById('text').style.textAlign = 'justify';
     document.getElementById('text').style.textJustify = 'distribute-all-lines';
     document.getElementById('text').style.textAlignLast = 'justify';
