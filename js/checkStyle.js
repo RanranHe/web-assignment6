@@ -96,6 +96,11 @@ export function isStyle(style) {
         if (style === 'bold')
             return getComputedStyle(window.getSelection().anchorNode.parentElement).fontWeight === '700'
             && getComputedStyle(window.getSelection().focusNode.parentElement).fontWeight === '700';
+        if (style === 'underline')
+            return getComputedStyle(window.getSelection().anchorNode.parentElement).textDecoration.toString().includes('underline')
+                && getComputedStyle(window.getSelection().focusNode.parentElement).textDecoration.toString().includes('underline');
     };
+    // console.log(getComputedStyle(window.getSelection().anchorNode.parentElement).textDecoration.toString().includes('underline'))
+    // console.log(checkTwoSides())
     return (checkTwoSides() && flag);
 }

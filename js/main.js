@@ -9,6 +9,7 @@ document.onkeyup = document.onmouseup = function () {
     // }
     buttonBoldColor();
     buttonItalicsColor();
+    buttonUnderlineColor();
 };
 
 function resetAllButtons() {
@@ -30,6 +31,13 @@ function buttonItalicsColor() {
         document.getElementById('btn_italics').style.backgroundColor = "#FAFAFA";
 }
 
+function buttonUnderlineColor() {
+    if (isStyle('underline'))
+        document.getElementById('btn_underline').style.backgroundColor = "#2789b3";
+    else
+        document.getElementById('btn_underline').style.backgroundColor = "#FAFAFA";
+}
+
 
 
 
@@ -39,17 +47,25 @@ function buttonItalicsColor() {
 document.getElementById('btn_bold').onclick = function () {
     document.getElementById('text').focus();
     if (isStyle('bold'))
-        insertHtmlAtCaret('NB');
+        insertHtmlAtCaret('bold_false');
     else
-        insertHtmlAtCaret('B');
+        insertHtmlAtCaret('bold');
 };
 
 document.getElementById('btn_italics').onclick = function () {
     document.getElementById('text').focus();
     if (isStyle('italic'))
-        insertHtmlAtCaret('NI');
+        insertHtmlAtCaret('italic_false');
     else
-        insertHtmlAtCaret('I');
+        insertHtmlAtCaret('italic');
+};
+
+document.getElementById('btn_underline').onclick = function () {
+    document.getElementById('text').focus();
+    if (isStyle('underline'))
+        insertHtmlAtCaret('underline_false');
+    else
+        insertHtmlAtCaret('underline');
 };
 
 

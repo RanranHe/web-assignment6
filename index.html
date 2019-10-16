@@ -11,18 +11,41 @@
 
         span.bold {
             font-weight: bold;
+            display: inline-block;
         }
 
         span.italic {
             font-style: italic;
+            display: inline-block;
         }
 
         span.bold_false {
             font-weight: normal;
+            display: inline-block;
         }
 
         span.italic_false {
             font-style: normal;
+            display: inline-block;
+        }
+
+        span.underline {
+            text-decoration: underline;
+            display: inline-block;
+        }
+
+        span.underline_false {
+            text-decoration: none;
+            display:inline-block;
+        }
+
+        span.leftAliagn {
+            float: left;
+            display: inline-block;
+        }
+        span.leftAliagn {
+            float: none;
+            display: inline-block;
         }
     </style>
 
@@ -31,35 +54,18 @@
 
 
 <button type="button" id='btn_bold'>
-    bold
+    Bold
 </button>
 <button type="button" id='btn_italics'>
     Italics
 </button>
+<button type="button" id='btn_underline'>
+    Underline
+</button>
+
 <div style="height:50px; border:2px solid red;" id="text">
-    <!--dasdsadasdasdasddas<span class="bold">dasdas<span class="bold_false"><span class="bold">da</span>s<span-->
-    <!--class="bold">ds</span></span>adsa</span>-->
-
-    <!--dasdsad<span class="bold">asd</span><span class="bold"><span class="bold">asdas</span>ddas<span-->
-    <!--class="bold">dasd</span></span><span class="bold">as<span class="bold_false"><span class="bold">da</span>s<span-->
-    <!--class="bold">ds</span></span>adsa</span>-->
-
-    <!--dasdsad<span class="bold">asd</span><span class="bold"><span class="bold">asdas</span>dda</span><span-->
-    <!--class="italic"><span class="bold italic">s<span class="bold">dasd</span></span><span class="bold italic">as<span-->
-    <!--class="bold_false"><span class="bold">da</span>s<span class="bold">ds</span></span>ad</span></span><span-->
-    <!--class="bold">sa</span>-->
-
-    <!--abc<span class="bold">def</span><span class="italic"><span class="bold italic">g</span><span-->
-    <!--class="bold italic"><span class="bold">hi</span></span></span><span class="bold"><span-->
-    <!--class="bold">jk</span>l</span><span class="italic"><span class="bold italic">m<span class="bold">n</span></span><span-->
-    <!--class="bold italic">o</span></span><span class="bold">pq</span>-->
-
     abcdefghijklmnopq
-
-
-    <!--abc<span class="bold">def</span><span class="italic"><span class="bold italic">g</span><span class="bold italic"><span class="bold">hi</span></span></span><span class="bold"><span class="bold">jk</span>l</span><span class="italic"><span class="bold italic">m<span class="bold">n</span></span><span class="bold italic">o</span></span><span class="bold">pq</span>-->
-
-    <!--<span class="italic">abcdefg</span><span class="bold"><span class="italic bold">hi</span>jk<span class="italic">lmnopq</span></span>-->
+    abcdefghij<span class="underline">k<span class="underline_false none">lmno</span>pq</span>
 </div>
 
 <script type="module" src="js/main.js"></script>

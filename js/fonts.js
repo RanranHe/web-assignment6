@@ -10,24 +10,34 @@ export function insertHtmlAtCaret(style) {
             span.append(range.cloneContents());
             // console.log(span);
 
-            if (style === 'B') {
+            if (style === 'bold') {
                 removeClass(span, "bold_false");
                 addClass(span, "bold");
                 el.innerHTML = span.innerHTML;
             }
-            if (style === 'NB') {
+            if (style === 'bold_false') {
                 removeClass(span, "bold");
                 addClass(span, "bold_false");
                 el.innerHTML = span.innerHTML;
             }
-            if (style === 'I') {
+            if (style === 'italic') {
                 removeClass(span, "italic_false");
                 addClass(span, "italic");
                 el.innerHTML = span.innerHTML;
             }
-            if (style === 'NI') {
+            if (style === 'italic_false') {
                 removeClass(span, "italic");
                 addClass(span, "italic_false");
+                el.innerHTML = span.innerHTML;
+            }
+            if (style === 'underline') {
+                removeClass(span, "underline_false");
+                addClass(span, "underline");
+                el.innerHTML = span.innerHTML;
+            }
+            if (style === 'underline_false') {
+                removeClass(span, "underline");
+                addClass(span, "underline_false");
                 el.innerHTML = span.innerHTML;
             }
             range.deleteContents();
