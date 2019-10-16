@@ -1,12 +1,11 @@
-import { insertHtmlAtCaret } from "./fonts.js";
+import {insertHtmlAtCaret} from "./fonts.js";
 import {isStyle} from "./checkStyle.js";
 
 document.onkeyup = document.onmouseup = function () {
-    // console.log(window.getSelection().anchorNode.parentElement.tagName)
-    // if (window.getSelection().anchorNode.parentElement.tagName === 'BUTTON') {
-    //         resetAllButtons();
-    //         return;
-    // }
+    if (window.getSelection().isCollapsed) {
+        resetAllButtons();
+        return;
+    }
     buttonBoldColor();
     buttonItalicsColor();
     buttonUnderlineColor();
@@ -16,6 +15,12 @@ document.onkeyup = document.onmouseup = function () {
 function resetAllButtons() {
     document.getElementById('btn_bold').style.backgroundColor = "#FAFAFA";
     document.getElementById('btn_italics').style.backgroundColor = "#FAFAFA";
+    document.getElementById('btn_underline').style.backgroundColor = "#FAFAFA";
+    document.getElementById('btn_leftAlign').style.backgroundColor = "#FAFAFA";
+    document.getElementById('btn_rightAlign').style.backgroundColor = "#FAFAFA";
+    document.getElementById('btn_justify').style.backgroundColor = "#FAFAFA";
+    document.getElementById('btn_italics').style.backgroundColor = "#FAFAFA";
+
 }
 
 function buttonBoldColor() {
@@ -45,10 +50,6 @@ function buttonleftAlignColor() {
     else
         document.getElementById('btn_leftAlign').style.backgroundColor = "#FAFAFA";
 }
-
-
-
-
 
 
 document.getElementById('btn_bold').onclick = function () {

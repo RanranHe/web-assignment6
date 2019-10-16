@@ -29,7 +29,7 @@ export function isStyle(style) {
 
     } else {
 
-        AllBold(el, !range.commonAncestorContainer.classList.contains(style+'_false'));
+        AllBold(el, !range.commonAncestorContainer.classList.contains(style + '_false'));
     }
 
     function AllBold(ele, bool) {
@@ -47,7 +47,7 @@ export function isStyle(style) {
                         AllBold(ele.childNodes[i], true);
                     } else {
                         console.log(bool)
-                        if (ele.childNodes[i].classList.contains(style+'_false')) {
+                        if (ele.childNodes[i].classList.contains(style + '_false')) {
                             if (ele.childNodes[i].childNodes.length > ele.childNodes[i].childElementCount) {
                                 ele.childNodes.forEach(node => {
                                     if (!(node.innerText === undefined && node.nodeValue === "" && node.innerText !== undefined)) {
@@ -95,7 +95,7 @@ export function isStyle(style) {
                 && getComputedStyle(window.getSelection().focusNode.parentElement).fontStyle === 'italic';
         if (style === 'bold')
             return getComputedStyle(window.getSelection().anchorNode.parentElement).fontWeight === '700'
-            && getComputedStyle(window.getSelection().focusNode.parentElement).fontWeight === '700';
+                && getComputedStyle(window.getSelection().focusNode.parentElement).fontWeight === '700';
         if (style === 'underline')
             return getComputedStyle(window.getSelection().anchorNode.parentElement).textDecoration.toString().includes('underline')
                 && getComputedStyle(window.getSelection().focusNode.parentElement).textDecoration.toString().includes('underline');
