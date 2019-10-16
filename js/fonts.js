@@ -8,7 +8,6 @@ export function insertHtmlAtCaret(style) {
 
             const span = document.createElement('div');
             span.append(range.cloneContents());
-            // console.log(span);
 
             if (style === 'bold') {
                 removeClass(span, "bold_false");
@@ -40,18 +39,8 @@ export function insertHtmlAtCaret(style) {
                 addClass(span, "underline_false");
                 el.innerHTML = span.innerHTML;
             }
-            // if (style === 'leftAlign') {
-            //     removeClass(span, "leftAlign_false");
-            //     addClass(span, "leftAlign");
-            //     el.innerHTML = span.innerHTML;
-            // }
-            // if (style === 'leftAlign_false') {
-            //     removeClass(span, "leftAlign");
-            //     addClass(span, "leftAlign_false");
-            //     el.innerHTML = span.innerHTML;
-            // }
             range.deleteContents();
-            var frag = document.createDocumentFragment(), node, lastNode;
+            let frag = document.createDocumentFragment(), node, lastNode;
             while ((node = el.firstChild)) {
                 lastNode = frag.appendChild(node);
             }
@@ -60,18 +49,12 @@ export function insertHtmlAtCaret(style) {
                 range = range.cloneRange();
                 range.setStartAfter(lastNode);
                 range.collapse(true);
-                // sel.removeAllRanges();
-                console.log("============================")
                 sel.addRange(range);
-                console.log(range.commonAncestorContainer.childNodes)
-                console.log("============================")
             }
-            console.log(document.getElementById('text').innerHTML);
         }
     }
 
     function removeClass(element, style) {
-        console.log(style)
         if (element.childElementCount === 0) {
             return;
         }
@@ -86,7 +69,6 @@ export function insertHtmlAtCaret(style) {
     }
 
     function addClass(element, style) {
-        console.log(style)
         for (var i = 0; i < element.childNodes.length; i++) {
             if (element.childNodes[i].className !== undefined) {
                 if (!element.childNodes[i].classList.contains(style)) {
@@ -94,39 +76,13 @@ export function insertHtmlAtCaret(style) {
                 }
                 addClass(element.childNodes[i], style);
             } else {
-                var temp = document.createElement('span');
+                const temp = document.createElement('span');
 
                 temp.classList.add("" + style);
-                // console.log(style)
-                // if (style === 'bold') {
-                //     temp.classList.add("bold");
-                // }
-                // if (style === 'italic') {
-                //     temp.classList.add("italic");
-                // }
-
-                temp.innerHTML = element.childNodes[i].nodeValue
-
-                console.log(temp.innerHTML)
-                element.replaceChild(temp, element.childNodes[i])
-                console.log(element.childNodes[i])
-                // node.innerHTML = `<span class='${style}'` + node.nodeValue + '</span>';
+                temp.innerHTML = element.childNodes[i].nodeValue;
+                element.replaceChild(temp, element.childNodes[i]);
             }
         }
-        // element.childNodes.forEach(node => {
-        //     if (node.className !== undefined) {
-        //         if (!node.classList.contains(style)) {
-        //             node.classList.add(style);
-        //         }
-        //     } else {
-        //         var temp = document.createElement('span');
-        //         temp.classList.add('' + style);
-        //         temp.innerHTML = node.nodeValue;
-        //         element.replaceChild(temp, )
-        //         // node.innerHTML = `<span class='${style}'` + node.nodeValue + '</span>';
-        //     }
-        //     removeClass(node);
-        // })
     }
 
 }
