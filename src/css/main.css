@@ -1,3 +1,4 @@
+/*a large box outline*/
 .large_box {
     height: 600px;
     width: 100%;
@@ -7,31 +8,38 @@
     text-justify: none;
 }
 
+/* the editable box */
 .small_box {
     height: 600px;
     width: 100%;
 }
 
+/* bold font style */
 span.bold {
     font-weight: bold;
 }
 
+/* italic font style */
 span.italic {
     font-style: italic;
 }
 
+/* no-bold font style */
 span.bold_false {
     font-weight: normal;
 }
 
+/* no-italic font style */
 span.italic_false {
     font-style: normal;
 }
 
+/* underline font style */
 span.underline {
     text-decoration: underline;
 }
 
+/* no-underline font style */
 span.underline_false {
     text-decoration: none;
 }
