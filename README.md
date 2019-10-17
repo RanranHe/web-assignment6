@@ -1,5 +1,5 @@
 # Assignment 6 - Text Editor
-An Text Editor similar to Google doc.
+A Text Editor similar to Google doc.
 
 ## User Requirements
 1. Load an HTML page with a div element for creating content and a toolbar.
