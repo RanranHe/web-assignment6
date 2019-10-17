@@ -1,0 +1,38 @@
+.large_box {
+    height: 600px;
+    width: 100%;
+    display: inline-block;
+    border:1px solid #818181;
+    margin-top: 1%;
+    text-justify: none;
+}
+
+.small_box {
+    height: 600px;
+    width: 100%;
+}
+
+span.bold {
+    font-weight: bold;
+}
+
+span.italic {
+    font-style: italic;
+}
+
+span.bold_false {
+    font-weight: normal;
+}
+
+span.italic_false {
+    font-style: normal;
+}
+
+span.underline {
+    text-decoration: underline;
+}
+
+span.underline_false {
+    text-decoration: none;
+}
+
