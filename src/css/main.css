@@ -36,11 +36,14 @@ span.italic_false {
 
 /* underline font style */
 span.underline {
+    color: rgb(2, 2, 2);
     text-decoration: underline;
 }
 
 /* no-underline font style */
 span.underline_false {
+    color: rgb(0, 0, 0);
     text-decoration: none;
+    display: inline-block;
 }
 
