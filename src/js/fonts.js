@@ -67,7 +67,7 @@ export function insertHtmlAtCaret(style) {
                 range = range.cloneRange();
                 range.setStartAfter(lastNode);
                 range.collapse(true);
-                sel.addRange(range);
+                // sel.addRange(range);
             }
         }
     }
