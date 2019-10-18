@@ -112,8 +112,10 @@ export function isStyle(style) {
             return getComputedStyle(window.getSelection().anchorNode.parentElement).fontWeight === '700'
                 && getComputedStyle(window.getSelection().focusNode.parentElement).fontWeight === '700';
         if (style === 'underline')
-            return getComputedStyle(window.getSelection().anchorNode.parentElement).textDecoration.toString().includes('rgb(2, 2, 2)')
-                && getComputedStyle(window.getSelection().focusNode.parentElement).textDecoration.toString().includes('rgb(2, 2, 2)');
+            return (getComputedStyle(window.getSelection().anchorNode.parentElement).textDecoration.toString().includes('rgb(2, 2, 2)')
+                || getComputedStyle(window.getSelection().anchorNode.parentElement).textDecoration.toString().includes('underline'))
+                && (getComputedStyle(window.getSelection().focusNode.parentElement).textDecoration.toString().includes('rgb(2, 2, 2)')
+                    || getComputedStyle(window.getSelection().focusNode.parentElement).textDecoration.toString().includes('underline'));
     };
     // determine whether the whole slected text is applied with this style
     return (checkTwoSides() && flag);
